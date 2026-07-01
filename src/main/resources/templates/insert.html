@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Transaction</title>
+
+    <link rel="stylesheet" th:href="@{/css/insert.css}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>💰 Add New Transaction</h1>
+
+    <form action="/insert" method="post">
+
+        <label>Type</label>
+        <select name="type" required>
+            <option value="">-- Select Type --</option>
+            <option value="INCOME">Income</option>
+            <option value="EXPENSE">Expense</option>
+        </select>
+
+        <label>Category</label>
+        <input type="text" name="category" placeholder="e.g. Salary, Food" required>
+
+        <label>Description</label>
+        <input type="text" name="description" placeholder="Enter description" required>
+
+        <label>Amount</label>
+        <input type="number" step="0.01" name="amount" placeholder="Enter amount" required>
+
+        <button type="submit">➕ Save Transaction</button>
+
+    </form>
+
+    <a href="/read" class="link">View All Transactions</a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+
+    background:linear-gradient(135deg,#1e3c72,#2a5298);
+    min-height:100vh;
+    color:white;
+}
+
+nav{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:20px 80px;
+
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(8px);
+}
+
+nav ul{
+
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+nav a{
+
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    transition:.3s;
+}
+
+nav a:hover{
+
+    color:#ffd700;
+}
+
+.hero{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    height:65vh;
+
+    padding:20px;
+}
+
+.content h1{
+
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+.content p{
+
+    font-size:22px;
+    width:70%;
+    margin:auto;
+    line-height:35px;
+}
+
+.buttons{
+
+    margin-top:40px;
+}
+
+.btn{
+
+    display:inline-block;
+    padding:15px 35px;
+
+    background:#00c853;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:40px;
+
+    margin:10px;
+
+    transition:.3s;
+
+    font-size:18px;
+}
+
+.btn:hover{
+
+    transform:translateY(-5px);
+    background:#00a844;
+}
+
+.btn2{
+
+    background:#ff9800;
+}
+
+.btn2:hover{
+
+    background:#ef6c00;
+}
+
+.features{
+
+    display:flex;
+    justify-content:center;
+    gap:30px;
+
+    margin:50px;
+    flex-wrap:wrap;
+}
+
+.card{
+
+    width:300px;
+
+    background:white;
+
+    color:#333;
+
+    border-radius:15px;
+
+    padding:30px;
+
+    text-align:center;
+
+    transition:.3s;
+}
+
+.card:hover{
+
+    transform:translateY(-10px);
+    box-shadow:0 15px 30px rgba(0,0,0,.4);
+}
+
+.card h2{
+
+    margin-bottom:15px;
+}
+
+footer{
+
+    text-align:center;
+
+    padding:20px;
+
+    margin-top:40px;
+
+    background:rgba(0,0,0,.2);
+}
+.btn3 {
+    background: #2196f3;
+}
+
+.btn3:hover {
+    background: #1976d2;
+}
+
+.btn4 {
+    background: #e53935;
+}
+
+.btn4:hover {
+    background: #c62828;
+}

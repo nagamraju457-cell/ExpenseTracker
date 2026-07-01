@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Transaction Dashboard</title>
+
+    <link rel="stylesheet" th:href="@{/css/read.css}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📊 Transaction Dashboard</h1>
+
+    <!-- SUMMARY -->
+    <div class="summary">
+
+        <div class="card income">
+            <h3>Income</h3>
+            <p th:text="${income}"></p>
+        </div>
+
+        <div class="card expense">
+            <h3>Expense</h3>
+            <p th:text="${expense}"></p>
+        </div>
+
+        <div class="card balance">
+            <h3>Balance</h3>
+            <p th:text="${balance}"></p>
+        </div>
+
+    </div>
+
+    <!-- CHART GRID -->
+    <div class="chart-grid">
+
+        <div class="chart-box">
+            <h2>Income vs Expense</h2>
+            <canvas id="barChart"></canvas>
+        </div>
+
+        <div class="chart-box">
+            <h2>Expense by Category</h2>
+            <canvas id="pieChart"></canvas>
+        </div>
+
+        <div class="chart-box full">
+            <h2>Monthly Trend</h2>
+            <canvas id="lineChart"></canvas>
+        </div>
+
+    </div>
+
+    <!-- TABLE -->
+    <table>
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="t : ${transactions}">
+                <td th:text="${t.id}"></td>
+                <td th:text="${t.type}"></td>
+                <td th:text="${t.category}"></td>
+                <td th:text="${t.description}"></td>
+                <td th:text="${t.amount}"></td>
+                <td th:text="${t.date}"></td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <!-- BUTTONS -->
+    <div class="btn-group">
+        <a href="/insert" class="btn">➕ Add</a>
+        <a href="/" class="btn home">🏠 Home</a>
+    </div>
+
+</div>
+
+<!-- JS DATA -->
+<script th:inline="javascript">
+
+    let income = [[${income}]];
+    let expense = [[${expense}]];
+    let transactions = [[${transactions}]];
+
+    // ---------------- BAR ----------------
+    new Chart(document.getElementById("barChart"), {
+        type: 'bar',
+        data: {
+            labels: ['Income', 'Expense'],
+            datasets: [{
+                label: 'Amount',
+                data: [income, expense],
+                backgroundColor: ['#00e676', '#ff5252']
+            }]
+        }
+    });
+
+    // ---------------- PIE ----------------
+    let categoryMap = {};
+
+    transactions.forEach(t => {
+        if (t.type === "EXPENSE") {
+            categoryMap[t.category] = (categoryMap[t.category] || 0) + t.amount;
+        }
+    });
+
+    new Chart(document.getElementById("pieChart"), {
+        type: 'pie',
+        data: {
+            labels: Object.keys(categoryMap),
+            datasets: [{
+                data: Object.values(categoryMap),
+                backgroundColor: ['#ff5252', '#ff9800', '#03a9f4', '#8e24aa', '#00e676']
+            }]
+        }
+    });
+
+    // ---------------- LINE ----------------
+    let monthMap = {};
+
+    transactions.forEach(t => {
+
+        let date = t.date;
+
+        if (!monthMap[date]) {
+            monthMap[date] = { income: 0, expense: 0 };
+        }
+
+        if (t.type === "INCOME") {
+            monthMap[date].income += t.amount;
+        } else {
+            monthMap[date].expense += t.amount;
+        }
+    });
+
+    let labels = [];
+    let incomeList = [];
+    let expenseList = [];
+
+    for (let key in monthMap) {
+        labels.push(key);
+        incomeList.push(monthMap[key].income);
+        expenseList.push(monthMap[key].expense);
+    }
+
+    new Chart(document.getElementById("lineChart"), {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: "Income",
+                    data: incomeList,
+                    borderColor: "#00e676"
+                },
+                {
+                    label: "Expense",
+                    data: expenseList,
+                    borderColor: "#ff5252"
+                }
+            ]
+        }
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Transaction</title>
+
+    <link rel="stylesheet" th:href="@{/css/delete.css}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🗑 Delete Transaction</h1>
+
+    <p class="warning">⚠ Enter the Transaction ID to permanently delete it</p>
+
+    <form action="/delete" method="post">
+
+        <label>Transaction ID</label>
+        <input type="number" name="id" placeholder="Enter ID" required>
+
+        <button type="submit">Delete</button>
+
+    </form>
+
+    <a href="/read" class="link">⬅ Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>

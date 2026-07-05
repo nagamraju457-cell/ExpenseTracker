@@ -1,45 +1,109 @@
-
-.delete-section {
+/* Background */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ff4b4b, #ff7b7b);
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    align-items: center;
+    min-height: 100vh;
 }
 
+/* Card */
+.container {
+    width: 420px;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.6s ease-in-out;
+}
 
+/* Heading */
+h1 {
+    color: #d32f2f;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+/* Paragraph */
+p {
+    color: #555;
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+strong {
+    color: #d32f2f;
+}
+
+/* Delete Button */
 .delete-btn {
-    background: linear-gradient(135deg, #ff4b4b, #d32f2f);
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
     color: white;
+    background: #d32f2f;
     border: none;
-    padding: 14px 28px;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 12px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 18px rgba(211, 47, 47, 0.3);
+    transition: 0.3s ease;
 }
 
 .delete-btn:hover {
-    background: linear-gradient(135deg, #d32f2f, #b71c1c);
+    background: #b71c1c;
     transform: translateY(-2px);
-    box-shadow: 0 12px 22px rgba(211, 47, 47, 0.4);
+    box-shadow: 0 8px 18px rgba(211, 47, 47, 0.35);
 }
 
-.delete-btn:active {
-    transform: scale(0.97);
-}
-
-.delete-btn:focus {
-    outline: none;
-}
+/* Back Link */
 .link {
-    display: block;
-    margin-top: 15px;
-    color: #b71c1c;
+    display: inline-block;
+    margin-top: 20px;
     text-decoration: none;
-    font-weight: bold;
+    color: #1976d2;
+    font-size: 17px;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
 .link:hover {
+    color: #0d47a1;
     text-decoration: underline;
+}
+
+/* Fade Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 500px) {
+    .container {
+        width: 90%;
+        padding: 30px 20px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .delete-btn {
+        font-size: 16px;
+    }
 }

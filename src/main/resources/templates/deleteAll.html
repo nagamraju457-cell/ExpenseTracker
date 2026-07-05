@@ -1,0 +1,21 @@
+<html>
+	</head>
+		<title> Delete All Data</title>
+		<link rel="stylesheet" th:href="@{/css/deleteAll.css}">
+	</head>
+	<body>
+		<div class="delete-section">
+		    <button class="delete-btn" onclick="confirmDelete()">
+		        🗑 Delete All Expenses
+		    </button>
+		</div>
+
+		<script>
+		function confirmDelete() {
+		    if (confirm("Are you sure you want to delete all expenses? This action cannot be undone.")) {
+		        document.getElementById("deleteForm").submit();
+		    }
+		}
+		</script>
+	</body>
+</html>

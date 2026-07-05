@@ -69,5 +69,9 @@ public class TransactionService {
 		}
 		return null;
 	}
+	public void deleteAll()
+	{
+		repo.deleteAll();
+	}
 }
 

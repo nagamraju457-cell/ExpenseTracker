@@ -63,6 +63,13 @@ public class TranController {
 		serv.delete(id);
 		return "redirect:/read";
 	}
+	@PostMapping("/deleteAll")
+	public String deleteAll()
+	{
+		serv.deleteAll();
+		return "redirect:/";
+	}
+	
 	
 	
 

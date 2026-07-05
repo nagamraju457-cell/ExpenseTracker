@@ -32,3 +32,14 @@
 .delete-btn:focus {
     outline: none;
 }
+.link {
+    display: block;
+    margin-top: 15px;
+    color: #b71c1c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
